@@ -1,16 +1,32 @@
 ---
-title: "Capstone"
-format: html
-editor: visual
+title: "GAM Fraud Analysis"
+subtitle: "Data Science Capstone Project"
+date: '`r Sys.Date()'
+format: 
+  html:
+  code-fold: true
+course: Capstone Projects in Data Science
+bibliography: references.bib # file contains bibtex for references
+#always_allow_html: true # this allows to get PDF with HTML features
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor:
+  markdown: 
+    wrap: 72
 ---
 
 ## Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Quarto enables you to weave together content and executable code into a
+finished document. To learn more about Quarto see <https://quarto.org>.
 
 ## Running Code
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+When you click the **Render** button a document will be generated that
+includes both content and the output of embedded code. You can embed
+code like this:
 
 ```{r}
 1 + 1
@@ -23,4 +39,5 @@ You can add options to executable code like this
 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+The `echo: false` option disables the printing of code (only output is
+displayed).

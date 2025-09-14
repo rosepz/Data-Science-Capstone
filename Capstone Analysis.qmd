@@ -53,6 +53,17 @@ For Symbolic Regression [@wang2019symbolic] *This is my work and I want
 to add more work...*
 
 Cite new paper [@su2012linear]
+Miller and colleagues (2025) explored the role of GAMs in analyzing seller behaviors on darknet markets, where fraudulent activities are common. Their study revealed that costly signals such as reputation and escrow usage were linked to reduced fraud, while cheap signals like overly complex product descriptions correlated with higher fraud likelihood. GAMs were used to model nonlinear effects of these behavioral variables, supporting signaling theory in fraud contexts and providing patterns for monitoring fraudulent behavior. 
+
+In financial reporting, GAMs have been applied to detect fraudulent statements. Tragouda et al. (2024) compared GAMs with logistic regression, k-nearest neighbors, and random forests, showing that GAMs performed on par with more complex machine learning models while providing clearer interpretability. This interpretability allows auditors and regulators to understand why a financial report may be flagged, making GAMs highly practical in financial decision-making contexts.
+
+Hanagandi et al. (2023) explore regularized generalized linear models, including Ridge, Lasso, and ElasticNet, for detecting credit card fraud in highly imbalanced datasets (0.17% fraud cases). These models, similar to GAMs, capture complex transaction patterns while remaining interpretable. Ridge regression achieved high accuracy (up to 98.2%). The study highlights that careful data preparation is crucial for effective real-time fraud detection in banking environments.
+
+Brossart et al. (2015) discuss the application of GAMs to Medicare claims data for identifying fraudulent billing and overcharging. GAMs effectively detect unusual patterns and provide clear visualizations, which enhance auditor trust. While highly interpretable, they can be less adaptive to emerging fraud patterns compared to more complex models, but their transparency makes them valuable for healthcare fraud investigations.
+
+
+
+
 
 ## Methods
 
@@ -103,6 +114,7 @@ A study was conducted to determine how...
 
 -   Tell a story about what the data reveals.
 
+
 ### Conclusion
 
 -   Summarize your key findings.
@@ -110,3 +122,11 @@ A study was conducted to determine how...
 -   Discuss the implications of your results.
 
 ## References
+•	Miller, D. L. (2025). Gam model – Fraud detection in darknet markets using generalized additive models. Figshare. https://doi.org/10.6084/m9.figshare.28618408
+•	Tragouda, K., Papadopoulos, T., & Stefanou, A. (2024). Identification of fraudulent financial statements through a multi-label classification approach. Intelligent Systems in Accounting, Finance and Management. Advance online publication. https://doi.org/10.1002/isaf.225
+•	Hanagandi, S., Dhar, M., & Buescher, D. (2023). Enhancing credit card fraud detection with regularized generalized linear models: A comparative analysis of down-sampling and up-sampling techniques. International Journal of Innovative Science and Research Technology, 8(9), 1533–1539.
+•	Brossart, D. F., Clay, D. L., & Willson, V. (2015). Detecting contaminated birthdates using generalized additive models. BMC Bioinformatics, 16(185), 1–9. https://doi.org/10.1186/s12859-015-0636-0
+•	
+•	
+•	
+

@@ -53,7 +53,7 @@ For Symbolic Regression [@wang2019symbolic] *This is my work and I want
 to add more work...*
 
 Cite new paper [@su2012linear]
-
+Miller (2025) investigates GAMs for identifying fraudulent financial statements, often hidden in complex accounting data. GAMs, combined with models like random forests, detect irregular revenue patterns and generate interpretable visualizations for auditors. Although effective, GAMs may miss sophisticated frauds involving multiple interacting factors. They provide a strong balance of accuracy and clarity for early detection of financial fraud.
 ## Methods
 
 -   Detail the models or algorithms used.

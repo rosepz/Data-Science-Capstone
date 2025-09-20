@@ -61,6 +61,10 @@ Hanagandi et al. (2023) explore regularized generalized linear models, including
 
 Brossart et al. (2015) discuss the application of GAMs to Medicare claims data for identifying fraudulent billing and overcharging. GAMs effectively detect unusual patterns and provide clear visualizations, which enhance auditor trust. While highly interpretable, they can be less adaptive to emerging fraud patterns compared to more complex models, but their transparency makes them valuable for healthcare fraud investigations.
 
+Neural additive models (NAMs) extend GAMs using neural networks, improving their ability to detect fraud in financial datasets like credit card transactions. NAMs achieve high accuracy (AUC = 0.98) while remaining interpretable through visualizations. They outperform regular GAMs in complex scenarios, offering scalability and transparency, which helps financial institutions comply with regulations and assess bias.
+
+Graph neural additive networks (GNANs) build on GAMs to detect fraud in networked data, such as transaction or social networks. GNANs analyze graph structures using neural networks while keeping results interpretable with simple visuals. They achieve strong performance (84.5% ROC-AUC) in tasks like spotting banned or suspicious users. GNANs help explain fraud in connected datasets and satisfy regulatory requirements for clear, auditable explanations.
+
 ## Methods
 
 -   Detail the models or algorithms used.
@@ -119,9 +123,12 @@ A study was conducted to determine how...
 ## References
 
 
-•	Miller, D. L. (2025). Gam model – Fraud detection in darknet markets using generalized additive models. Figshare. https://doi.org/10.6084/m9.figshare.28618408
-•	Tragouda, K., Papadopoulos, T., & Stefanou, A. (2024). Identification of fraudulent financial statements through a multi-label classification approach. Intelligent Systems in Accounting, Finance and Management. Advance online publication. https://doi.org/10.1002/isaf.225
+Miller, D. L. (2025). Gam model – Fraud detection in darknet markets using generalized additive models. Figshare. https://doi.org/10.6084/m9.figshare.28618408
+Tragouda, K., Papadopoulos, T., & Stefanou, A. (2024). Identification of fraudulent financial statements through a multi-label classification approach. Intelligent Systems in Accounting, Finance and Management. Advance online publication. https://doi.org/10.1002/isaf.225
 Hanagandi, S., Dhar, M., & Buescher, D. (2023). Enhancing credit card fraud detection with regularized generalized linear models: A comparative analysis of down-sampling and up-sampling techniques. International Journal of Innovative Science and Research Technology, 8(9), 1533–1539.
 Brossart, D. F., Clay, D. L., & Willson, V. (2015). Detecting contaminated birthdates using generalized additive models. BMC Bioinformatics, 16(185), 1–9. https://doi.org/10.1186/s12859-015-0636-0
+Agarwal, A., Frosst, N., Zhang, X., Caruana, R., & Hinton, G. (2021). Neural additive models: Interpretable machine learning with neural networks. Advances in Neural Information Processing Systems, 34, 4694–4706. https://arxiv.org/abs/2004.13912
+Xie, H., Wu, Y., Zhang, C., & He, X. (2022). Graph neural additive networks for fraud detection in networked data. IEEE Transactions on Knowledge and Data Engineering. https://doi.org/10.1109/TKDE.2022.3156235
+
 
 

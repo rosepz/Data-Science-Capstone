@@ -94,6 +94,128 @@ $$
 
 ## Analysis and Results
 
+```{r}
+# 1. Setup and Data Loading
+# ------------------------------------------------
+
+# Install and load necessary packages
+if (!requireNamespace("mgcv", quietly = TRUE)) install.packages("mgcv")
+if (!requireNamespace("pROC", quietly = TRUE)) install.packages("pROC")
+if (!requireNamespace("caret", quietly = TRUE)) install.packages("caret")
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+
+install.packages(c("mgcv", "pROC", "caret", "dplyr", "ggplot2"))
+library(mgcv)
+library(pROC)
+library(caret)
+library(dplyr)
+library(ggplot2)
+
+# Load the prepared dataset (Ensure 'synthetic_fraud_gam_data.csv' is in your working directory)
+data <- read.csv("synthetic_fraud_gam_data.csv")
+
+# ------------------------------------------------
+# 2. Data Preprocessing
+# ------------------------------------------------
+
+# Convert the target variable and categorical predictors to factors
+data$Fraud_Label <- factor(data$Fraud_Label, levels = c(0, 1))
+data$Is_Weekend <- factor(data$Is_Weekend)
+data$Previous_Fraudulent_Activity <- factor(data$Previous_Fraudulent_Activity)
+data$Device_Type <- factor(data$Device_Type)
+data$Card_Type <- factor(data$Card_Type)
+
+# ------------------------------------------------
+# 3. Data Splitting (CRITICAL STEP for 'train_data')
+# ------------------------------------------------
+
+set.seed(42) # For reproducibility
+# Create the indices for the training data
+train_index <- createDataPartition(data$Fraud_Label, p = 0.7, list = FALSE)
+# Create the training dataset
+train_data <- data[train_index, ]
+# Create the testing dataset
+test_data <- data[-train_index, ]
+
+# ------------------------------------------------
+# 4. GAM Fitting (Corrected with k=5)
+# ------------------------------------------------
+
+# Set k=5 to avoid the "fewer unique covariate combinations" error.
+gam_model <- gam(
+    Fraud_Label ~ s(Transaction_Amount, k=5) +
+                  s(Account_Balance, k=5) +
+                  s(Risk_Score, k=5) +
+                  s(Transaction_Distance, k=5) +
+                  Avg_Transaction_Amount_7d +
+                  Daily_Transaction_Count +
+                  Card_Age +
+                  Is_Weekend +
+                  Previous_Fraudulent_Activity +
+                  Device_Type +
+                  Card_Type,
+    data = train_data, # This now exists!
+    family = binomial(link = "logit"), 
+    method = "REML"
+)
+
+# Output summary to check p-value condition (< 0.001) for smooth terms
+cat("\n*** GAM Model Summary ***\n")
+print(summary(gam_model))
+
+# ------------------------------------------------
+# 5. Prediction and AUC Calculation
+# ------------------------------------------------
+
+test_probabilities <- predict(gam_model, newdata = test_data, type = "response")
+
+# Generate the ROC curve
+roc_obj <- roc(test_data$Fraud_Label, test_probabilities)
+auc_value <- auc(roc_obj)
+
+cat("\n*** AUC Result ***\n")
+cat("AUC for GAM Model:", round(auc_value, 4), "\n")
+cat("Condition (AUC > 0.8) Met:", auc_value > 0.8, "\n")
+
+# ------------------------------------------------
+# 6. Confusion Matrix and Balanced Accuracy
+# ------------------------------------------------
+
+# Convert probabilities to classes (using 0.5 threshold)
+predicted_classes <- factor(ifelse(test_probabilities > 0.5, 1, 0), levels = c(0, 1))
+cm <- confusionMatrix(predicted_classes, test_data$Fraud_Label, positive = "1")
+balanced_accuracy <- cm$byClass["Balanced Accuracy"]
+
+cat("\n*** Balanced Accuracy Result ***\n")
+cat("Balanced Accuracy:", round(balanced_accuracy, 4), "\n")
+cat("Condition (Balanced Accuracy > 0.8) Met:", balanced_accuracy > 0.8, "\n")
+cat("\nConfusion Matrix:\n")
+print(cm)
+
+# ------------------------------------------------
+# 7. Plotting the ROC Curve (Image Generation)
+# ------------------------------------------------
+
+# This saves the ROC curve to a PNG file named 'gam_roc_curve_final.png'
+png("gam_roc_curve_final.png", width = 800, height = 600, res = 100)
+plot(roc_obj, main = paste("GAM Model ROC Curve (AUC =", format(round(auc_value, 4), nsmall = 4), ")"),
+     col = "#1C78C0", lwd = 2)
+abline(a = 1, b = 1, lty = 2, col = "gray50") # Reference line (AUC = 0.5)
+dev.off()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ### Data Exploration and Visualization
 
 -   Describe your data sources and collection process.
@@ -129,6 +251,7 @@ Hanagandi, S., Dhar, M., & Buescher, D. (2023). Enhancing credit card fraud dete
 Brossart, D. F., Clay, D. L., & Willson, V. (2015). Detecting contaminated birthdates using generalized additive models. BMC Bioinformatics, 16(185), 1–9. https://doi.org/10.1186/s12859-015-0636-0
 Agarwal, A., Frosst, N., Zhang, X., Caruana, R., & Hinton, G. (2021). Neural additive models: Interpretable machine learning with neural networks. Advances in Neural Information Processing Systems, 34, 4694–4706. https://arxiv.org/abs/2004.13912
 Xie, H., Wu, Y., Zhang, C., & He, X. (2022). Graph neural additive networks for fraud detection in networked data. IEEE Transactions on Knowledge and Data Engineering. https://doi.org/10.1109/TKDE.2022.3156235
+
 
 
 

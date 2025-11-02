@@ -1,4 +1,11 @@
 ---
+title: "Capstone Analysis"
+author: "Your Name"
+format: html
+---
+
+
+---
 title: "GAM Fraud Analysis"
 subtitle: "Data Science Capstone Project"
 date: '`r Sys.Date()'
@@ -345,6 +352,7 @@ Hanagandi, S., Dhar, M., & Buescher, D. (2023). Enhancing credit card fraud dete
 Brossart, D. F., Clay, D. L., & Willson, V. (2015). Detecting contaminated birthdates using generalized additive models. BMC Bioinformatics, 16(185), 1–9. https://doi.org/10.1186/s12859-015-0636-0
 Agarwal, A., Frosst, N., Zhang, X., Caruana, R., & Hinton, G. (2021). Neural additive models: Interpretable machine learning with neural networks. Advances in Neural Information Processing Systems, 34, 4694–4706. https://arxiv.org/abs/2004.13912
 Xie, H., Wu, Y., Zhang, C., & He, X. (2022). Graph neural additive networks for fraud detection in networked data. IEEE Transactions on Knowledge and Data Engineering. https://doi.org/10.1109/TKDE.2022.3156235
+
 
 
 
